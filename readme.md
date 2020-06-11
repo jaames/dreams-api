@@ -46,4 +46,4 @@ GET `/api/creation/profile`
 
 | Query param | Value |
 |:-|:-|
-| `creationId` | User ID, e.g. `ogbtEqxCwzv` = "Vertical Moving Platform" |
+| `creationId` | Creation ID, e.g. `ogbtEqxCwzv` = "Vertical Moving Platform" |
