@@ -3,6 +3,8 @@ const crypto = require('crypto');
 
 const baseUrl = 'https://indreams.me';
 const hmacSecret = 'gUkXp2s5v8y/B?E(H+MbQeThWmYq3t6w';
+// dream|scene|element|collection|photo|version|tag
+const dreamIdRegex = /[m|d|o|c|p|v|t]{1}[a-f0-9]{10}/;
 
 function authHeaders(path, body) {
   const timestamp = Math.round((new Date).getTime() / 1000);

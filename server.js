@@ -8,6 +8,6 @@ server.get('/*', async (req, res) => {
   console.log(req.path, req.query);
   const data = await requestGet(req.path, req.query);
   res.send(data);
-})
+});
 
 server.listen(port, () => console.log(`Listening at http://localhost:${port}`));
