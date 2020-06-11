@@ -162,24 +162,46 @@ GET `/api/creation/followers`
 
 ## Notes
 
-### ID Format
+### IDs
 
-All dreams IDs seem to match the regex `/[m|v|d|o|c|u|p]{1}[a-f0-9]{10}/`, where the first character denotes the ID type:
+There are two possible formats for IDs. The api uses Indreams IDs, but I think the longer Dreams ID format is perhaps used internally. It's possible to convert an ID back and forth between both formats (todo: document this)
+
+#### Indreams ID
+
+These are shorter IDs used on https://indreams.me, matching the regex `/[c|k|m|o|g|j|n|p|r|d|t|u|v|w]{1}[a-zA-Z0-9]{10}/`
+
+#### Dreams ID
+
+Longer hexidecimal format matching the regex `/[c|k|m|o|g|j|n|p|r|d|t|u|v|w]{1}[a-f0-9]{14}/`
+
+#### ID Type
+
+In both formats, the first character of the ID denotes the type of thing it refers to:
 
 | Char | thingType |
 |:-|:-|
-| `m` | DREAM |
-| `v` | VERSION |
-| `d` | SCENE |
-| `o` | ELEMENT |
 | `c` | COLLECTION |
-| `u` | USER |
+| `k` | COMMENT |
+| `m` | DREAM |
+| `o` | ELEMENT |
+| `g` | GREIF |
+| `j` | IDENTITY |
+| `n` | NEWS |
 | `p` | PHOTO |
+| 'r` | REVISION |
+| `d` | SCENE |
 | `t` | TAG |
+| `u` | USER |
+| `v` | VERSION |
+| `w` | WEBPAGE |
 
 ### Image Urls
 
-All image URLs follow the pattern `https://cdn.indreams.me/< hash >< (optional) suffix >`
+All image URLs follow the pattern `https://cdn.indreams.me/< hash >< suffix >`
+
+The image hash is always a 32-char string matching the regex `/[a-f0-9]{32}/`. I have no idea how it's generated.
+
+The suffix is optional, and is used to specify the image type:
 
 | Suffix | imageType | Width | Height |
 |:-|:-|:-|:-|
