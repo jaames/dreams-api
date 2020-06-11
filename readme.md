@@ -176,3 +176,26 @@ All dreams IDs seem to match the regex `/[m|v|d|o|c|u|p]{1}[a-f0-9]{10}/`, where
 | `u` | USER |
 | `p` | PHOTO |
 | `t` | TAG |
+
+### Image Urls
+
+All image URLs follow the pattern `https://cdn.indreams.me/< hash >< (optional) suffix >`
+
+| Suffix | imageType | Width | Height |
+|:-|:-|:-|:-|
+| none | - | 1920 | 1080 |
+| `_1` | LARGE_RECTANGLE | 480 | 270 |
+| `_2` | FEATHERED_HEXAGON | 256 | 256 |
+| `_3` | FEATHERED_RECTANGLE | 448 | 256 |
+| `_4` | FEATHERED_CIRCLE | 256 | 256 |
+| `_5` | MEDIUM_RECTANGLE | 240 | 135 |
+| `_6` | SMALL_RECTANGLE | 120 | 67 |
+| `_7` | BLURRED | 240 | 134 |
+| `_8` | SQUARE | 1024 | 1024 |
+| `_9` | MEDIUM_SQUARE | 512 | 512 |
+| `_10` | SMALL_SQUARE | 256 | 256 |
+| `_11` | LANDSCAPE | 1200 | 630 |
+| `_12` | SOCIAL | 512 | 512 |
+| `_13` | SOCIAL_HEXAGON | 512 | 512 |
+| `_14` | SOCIAL_RECTANGLE | 512 | 512 |
+| `_15` | SOCIAL_CIRCLEE | 512 | 512 |
