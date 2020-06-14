@@ -1,12 +1,18 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import { 
   requestGet,
   requestPost,
-  QueryStringObject
+  QueryStringObject,
 } from './dreamsClient';
 
 const server = express();
 const port = 3000;
+
+server.use(express.json());
+server.use(bodyParser.raw());
+
+
 
 server.get('/*', async (req, res) => {
   const data = await requestGet(req.path, req.query as QueryStringObject);

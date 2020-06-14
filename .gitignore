@@ -1,5 +1,6 @@
 dist
 debug
+apiconfig.json
 
 # Logs
 logs

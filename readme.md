@@ -28,6 +28,12 @@ Then inside the repo directory, install dependencies:
 npm install
 ```
 
+Copy `apiconfig.example.json` to `apiconfig.json`
+
+```bash
+cp apiconfig.example.json apiconfig.json
+```
+
 Then start the server:
 
 ```bash

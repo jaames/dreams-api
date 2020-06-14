@@ -1,0 +1,11 @@
+{
+  "Cookie": {
+    "AuthToken": "",
+    "Issuer": "256",
+    "Locale": "en_GB",
+    "SilentSignin": "true",
+    "Path": "/",
+    "HttpOnly": true,
+    "Secure": true
+  }
+}
