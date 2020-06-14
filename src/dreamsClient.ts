@@ -92,9 +92,9 @@ export async function requestGet(endpoint: string, queryObject: QueryStringObjec
   })
   .then(response => {
     updateCookieFromResponse(response);
-    return response.data;
+    return response;
   })
-  .catch(error => error.response.data);
+  .catch(error => error.response);
 }
 
 export async function requestPost(path: string, body: any) {
@@ -106,7 +106,32 @@ export async function requestPost(path: string, body: any) {
   })
   .then(response => {
     updateCookieFromResponse(response);
-    return response.data;
+    return response;
   })
-  .catch(error => error.response.data);
+  .catch(error => error.response);
+}
+
+export async function requestPostAudio(path: string, filename: string, body: any) {
+  const safeFilename = encodeURIComponent(filename);
+  const timestamp = Math.round((new Date).getTime() / 1000);
+  const hmac = crypto.createHmac('sha256', hmacSecret);
+  hmac.update(safeFilename);
+  hmac.update(path);
+  hmac.update(timestamp.toString());
+  const audioAuthHeaders = {
+    'X-Auth': hmac.digest('hex'),
+    'X-Ts': timestamp,
+    'X-Filename': safeFilename
+  };
+  return axios.post(`${ baseUrl }${ path }`, body, {
+    headers: {
+      ...audioAuthHeaders,
+      ...jwtHeaders(),
+    }
+  })
+  .then(response => {
+    updateCookieFromResponse(response);
+    return response;
+  })
+  .catch(error => error.response)
 }
