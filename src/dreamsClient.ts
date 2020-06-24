@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import crypto from 'crypto';
-import { getConfigValue, setConfig, setConfigValue } from './config';
+import { getConfigValue, setConfigValue } from './config';
 
 const baseUrl = 'https://indreams.me';
 const hmacSecret = 'gUkXp2s5v8y/B?E(H+MbQeThWmYq3t6w';
@@ -113,20 +113,11 @@ export async function requestPost(path: string, body: any) {
 
 export async function requestPostAudio(path: string, filename: string, body: any) {
   const safeFilename = encodeURIComponent(filename);
-  const timestamp = Math.round((new Date).getTime() / 1000);
-  const hmac = crypto.createHmac('sha256', hmacSecret);
-  hmac.update(safeFilename);
-  hmac.update(path);
-  hmac.update(timestamp.toString());
-  const audioAuthHeaders = {
-    'X-Auth': hmac.digest('hex'),
-    'X-Ts': timestamp,
-    'X-Filename': safeFilename
-  };
   return axios.post(`${ baseUrl }${ path }`, body, {
     headers: {
-      ...audioAuthHeaders,
       ...jwtHeaders(),
+      ...authHeaders(path, safeFilename),
+      'X-Filename': safeFilename
     }
   })
   .then(response => {
