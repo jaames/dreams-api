@@ -34,7 +34,7 @@ Copy `apiconfig.example.json` to `apiconfig.json`
 cp apiconfig.example.json apiconfig.json
 ```
 
-Then start the server:
+Then start the server :
 
 ```bash
 npm run start
